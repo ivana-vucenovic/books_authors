@@ -7,28 +7,16 @@
     <title>Books/Authors</title>
 </head>
 <body>
-    <!-- <h3>Author List</h3>
-    <ul>
-        {% for book in books %}
-        <li>{book.title}} {{book.desc}}
-            <ul>
-                {% for author in book.autors.all %}
-                    <li><em>{{author.first_name}} {{author.last_name}}</em></li>
-                {% endfor %}
-            </ul>
-        </li>
-        {% endfor %}
-    </ul>  -->
     <nav>
         <h1>Books & Authors</h1>
         <a href="/">Books</a>
         <a href="/authors">Authors</a>
     </nav>
     <div class="container">
-        <h1>{{ book.title }}</h1>
-        <p><strong>Id</strong> {{ book.id }}</p>
-        <p><strong>Description</strong> {{ book.description }}</p>
-        <p><strong>Authors</strong></p>
+        <h2>{{ book.title }}</h2>
+        <p>Id {{ book.id }}</p>
+        <p>Description {{ book.description }}</p>
+        <p>Authors</p>
         <ul>
             {% for author in book.authors.all %}
             <li>{{ author.full_name }}</li>
