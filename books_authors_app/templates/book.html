@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books/Authors</title>
+</head>
+<body>
+    <!-- <h3>Author List</h3>
+    <ul>
+        {% for book in books %}
+        <li>{book.title}} {{book.desc}}
+            <ul>
+                {% for author in book.autors.all %}
+                    <li><em>{{author.first_name}} {{author.last_name}}</em></li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>  -->
+    <nav>
+        <h1>Books & Authors</h1>
+        <a href="/">Books</a>
+        <a href="/authors">Authors</a>
+    </nav>
+    <div class="container">
+        <h1>{{ book.title }}</h1>
+        <p><strong>Id</strong> {{ book.id }}</p>
+        <p><strong>Description</strong> {{ book.description }}</p>
+        <p><strong>Authors</strong></p>
+        <ul>
+            {% for author in book.authors.all %}
+            <li>{{ author.full_name }}</li>
+            {% endfor %}
+        </ul>
+        {% if authors %}
+        <form action="/books/{{ book.id }}/assign" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="author_id">Add Author</label>
+                <select name="author_id" id="author_id" class="form-control">
+                    {% for author in authors %}
+                    <option value="{{ author.id }}">{{ author.full_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button class="btn btn-primary">Add</button>
+        </form>
+        {% endif %}
+    </div> 
+    
+</body>
+</html>
